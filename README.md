@@ -16,6 +16,6 @@ In this challenge I was tasked with writing the JavaScript code to run in the pa
 
 ## Example of program using a length of ten, and all character types.
 
-![program example](Develop\assets\password-screenshot1.png)
+![program example](assets\password-screenshot1.png)
 
 

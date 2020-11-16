@@ -32,8 +32,6 @@ var charactersSelect = function() {
   var characterConfirm = [lowerConfirm, upperConfirm, numberConfirm,specialsConfirm];
   
   return characterConfirm.toString();
-
-  // finish function!
 };
 
 //random number
@@ -49,217 +47,203 @@ var generatePassword = function() {
 
   var characterConfirm = charactersSelect();
   
-  if (characterConfirm === "false,false,false,false") {
-    window.alert("Please select at least one of the character options.");
-    characterConfirm = charactersSelect();
-  }
+  switch (characterConfirm) {
+    case "true,false,false,false":
+        for (var i = 0; i < length; i++) {
 
-  if (characterConfirm === "true,false,false,false") {
-    for (var i = 0; i < length; i++) {
-      var x = randomNumber(lower.length);
-      var character = lower[x];
-      password = password + character;
-    }
-  }
+            var x = randomNumber(lower.length);
+            var character = lower[x];
+            password = password + character;
+        }
+        return password;
+    
+    case "true,true,false,false":
+        for (var i = 0; i < length; i++) {
+            var x = Math.floor((Math.random() * 2) + 1);
+            
+            if (x === 1) {
+                var x = randomNumber(lower.length);
+                var character = lower[x];
+                password = password + character;
+            }
+            if (x === 2) {
+                var x = randomNumber(upper.length);
+                var character = upper[x];
+                password = password + character;
+            }
+        }
+        return password;
 
-  if (characterConfirm === "true,true,false,false") {
-    for (var i = 0; i < length; i++) {
-      var x = Math.floor((Math.random() * 2) + 1);
-      
-      if (x === 1) {
-        var x = randomNumber(lower.length);
-        var character = lower[x];
-        password = password + character;
-      }
-      if (x === 2) {
-        var x = randomNumber(upper.length);
-        var character = upper[x];
-        password = password + character;
-      }
-    }
-  }
-
-  if (characterConfirm === "true,true,true,false") {
-    for (var i = 0; i < length; i++) {
-      var x = Math.floor((Math.random() * 3) + 1);
-
-      if (x === 1) {
-        var x = randomNumber(lower.length);
-        var character = lower[x];
-        password = password + character;
-      }
-      if (x === 2) {
-        var x = randomNumber(upper.length);
-        var character = upper[x];
-        password = password + character;
-      }
-      if (x === 3) {
-        var x = randomNumber(number.length);
-        var character = number[x];
-        password = password + character;
-      }
-    }
-  }
-
-  if (characterConfirm === "true,true,true,true") {
-    for (var i = 0; i < length; i++) {
-      var x = Math.floor((Math.random() * 4) + 1);
-
-      if (x === 1) {
-        var x = randomNumber(lower.length);
-        var character = lower[x];
-        password = password + character;
-      }
-      if (x === 2) {
-        var x = randomNumber(upper.length);
-        var character = upper[x];
-        password = password + character;
-      }
-      if (x === 3) {
-        var x = randomNumber(number.length);
-        var character = number[x];
-        password = password + character;
-      }
-      if (x === 4 ) {
-        var x = randomNumber(specials.length);
-        var character = specials[x];
-        password = password + character;
-      }
-    }
-  }
-
-  if (characterConfirm === "false,false,false,true") {
-    for (var i = 0; i < length; i++) {
-      var x = randomNumber(specials.length);
-      var character = specials[x];
-      password = password + character;
-    }
-  }
+    case "true,true,true,false":
+        for (var i = 0; i < length; i++) {
+            var x = Math.floor((Math.random() * 3) + 1);
   
-  if (characterConfirm === "false,false,true,true") {
-    for (var i = 0; i < length; i++){
-      var x = Math.floor((Math.random() * 2) + 1);
+            if (x === 1) {
+                var x = randomNumber(lower.length);
+                var character = lower[x];
+                password = password + character;
+        }
+            if (x === 2) {
+                var x = randomNumber(upper.length);
+                var character = upper[x];
+                password = password + character;
+            }
+            if (x === 3) {
+                var x = randomNumber(number.length);
+                var character = number[x];
+                password = password + character;
+            }
+        }
+        return password;
 
-      if (x === 1) {
-        var x = randomNumber(number.length);
-        var character = number[x];
-        password = password + character;
-      }
-      if (x === 2) {
-        var x = randomNumber(specials.length);
-        var character = specials[x];
-        password = password + character;
-      }
-    }
+    case "true,true,true,true":
+        for (var i = 0; i < length; i++) {
+            var x = Math.floor((Math.random() * 4) + 1);
+
+            if (x === 1) {
+                var x = randomNumber(lower.length);
+                var character = lower[x];
+                password = password + character;
+            }
+            if (x === 2) {
+                var x = randomNumber(upper.length);
+                var character = upper[x];
+                password = password + character;
+            }
+            if (x === 3) {
+                var x = randomNumber(number.length);
+                var character = number[x];
+                password = password + character;
+            }
+            if (x === 4) {
+                var x = randomNumber(specials.length);
+                var character = specials[x];
+                password = password + character;
+            }
+        }
+        return password;
+
+    case "false,false,false,true":
+        for (var i = 0; i < length; i++) {
+
+            var x = randomNumber(specials.length);
+            var character = specials[x];
+            password = password + character;
+        }
+        return password;
+
+    case "false,false,true,true":
+        for (var i = 0; i < length; i++) {
+            var x = Math.floor((Math.random() * 2) + 1);
+
+            if (x === 1) {
+                var x = randomNumber(number.length);
+                var character = number[x];
+                password = password + character;
+            }
+            if (x === 2) {
+                var x = randomNumber(specials.length);
+                var character = specials[x];
+                password = password + character;
+            }
+        }
+        return password;
+
+    case "false,true,true,true":
+        for (var i = 0; i < length; i++) {
+            var x = Math.floor((Math.random() * 3) + 1);
+
+            if (x === 1) {
+                var x = randomNumber(upper.length);
+                var character = upper[x];
+                password = password + character;
+            }
+            if ( x === 2) {
+                var x = randomNumber(number.length);
+                var character = number[x];
+                password = password + character;
+            }
+            if ( x === 3) {
+                var x = randomNumber(specials.length);
+                var character = specials[x];
+                password = password + character;
+            }
+        }
+        return password;
+
+    case "true,false,true,false":
+        for (var i = 0; i < length; i++) {
+            var x = Math.floor((Math.random() * 2) + 1);
+
+            if (x === 1) {
+                var x = randomNumber(lower.length);
+                var character = lower[x];
+                password = password + character;
+            }
+            if (x === 2) {
+                var x = randomNumber(number.length);
+                var character = number[x];
+                password = password + character;
+            }
+        }
+        return password;
+
+    case "false,true,false,true":
+        for (var i = 0; i < length; i++) {
+            var x = Math.floor((Math.random() * 2) + 1);
+
+            if (x === 1) {
+                var x = randomNumber(upper.length);
+                var character = upper[x];
+                password = password + character;
+            }
+            if (x === 2) {
+                var x = randomNumber(specials.length);
+                var character = specials[x];
+                password = password + character;
+            }
+        }
+        return password;
+
+    case "true,false,false,true":
+        for (var i = 0; i < length; i++) {
+            var x = Math.floor((Math.random() * 2) + 1);
+
+            if (x === 1) {
+                var x = randomNumber(lower.length);
+                var character = lower[x];
+                password = password + character;
+            }
+            if (x === 2) {
+                var x = randomNumber(specials.length);
+                var character = specials[x];
+                password = password + character;
+            }
+        }
+        return password;
+
+    case "false,true,false,false":
+        for (var i = 0; i < length; i++) {
+
+            var x = randomNumber(upper.length);
+            var character = upper[x];
+            password = password + character;
+        }
+        return password;
+
+    case "false,false,true,false":
+        for (var i = 0; i < length; i++) {
+
+            var x = randomNumber(number.length);
+            var character = number[x];
+            password = password + character;
+        }
+        return password;
+
+    default: 
+        window.alert("Please select at least one of the character options.");
+        charactersSelect();
   }
-
-  if (characterConfirm === "false,true,true,true") {
-    for (var i = 0; i < length; i++) {
-      var x = Math.floor((Math.random() * 3) + 1);
-
-      if (x === 1) {
-        var x = randomNumber(upper.length);
-        var character = upper[x];
-        password = password + character;
-      }
-      if (x === 2) {
-        var x = randomNumber(number.length);
-        var character = number[x];
-        password = password + character;
-      }
-      if (x === 3) {
-        var x = randomNumber(specials.length);
-        var character = specials[x];
-        password = password + character;
-      }
-    }
-  }
-
-  if (characterConfirm === "true,false,true,false") {
-    for (var i = 0; i < length; i++) {
-      var x = Math.floor((Math.random() * 2) + 1);
-
-      if (x === 1) {
-        var x = randomNumber(lower.length);
-        var character = lower[x];
-        password = password + character;
-      }
-      if (x === 2) {
-        var x = randomNumber(number.length);
-        var character = number[x];
-        password = password + character;
-      }
-    }
-  }
-
-  if (characterConfirm === "false,true,false,true") {
-    for (var i = 0; i < length; i++) {
-      var x = Math.floor((Math.random() * 2) + 1);
-
-      if (x === 1) {
-        var x = randomNumber(upper.length);
-        var character = upper[x];
-        password = password + character;
-      }
-      if (x === 2) {
-        var x = randomNumber(specials.length);
-        var character = specials[x];
-        password = password + character;
-      }
-    }
-  }
-
-  if (characterConfirm === "true,false,false,true") {
-    for (var i = 0; i < length; i++) {
-      var x = Math.floor((Math.random() * 2) + 1);
-
-      if (x === 1) {
-        var x = randomNumber(lower.length);
-        var character = lower[x];
-        password = password + character;
-      }
-      if (x === 2) {
-        var x = randomNumber(specials.length);
-        var character = specials[x];
-        password = password + character;
-      }
-    }
-  }
-
-  if (characterConfirm === "false,true,false,true") {
-    for (var i = 0; i < length; i++) {
-      var x = Math.floor((Math.random() * 2) + 1);
-
-      if (x === 1) {
-        var x = randomNumber(upper.length);
-        var character = upper[x];
-        password = password + character;
-      }
-      if (x === 2) {
-        var x = randomNumber(specials.length);
-        var character = specials[x];
-        password = password + character;
-      }
-    }
-  }
-
-  if (characterConfirm === "false,true,false,false") {
-    for (var i = 0; i < length; i++) {
-
-      var x = randomNumber(upper.length);
-      var character = upper[x];
-      password = password + character;
-    }
-  }
-
-  if (characterConfirm === "false,false,true,false") {
-    for (var i = 0; i < length; i++) {
-      var x = randomNumber(number.length);
-      var character = number[x];
-      password = password + character;
-    }
-  }
-  return password;
 };
 
 
